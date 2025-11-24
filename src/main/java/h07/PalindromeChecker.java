@@ -25,4 +25,16 @@ public class PalindromeChecker {
     public static boolean isPalindromeIterative(int[] arr) {
         return Student.crash(); //TODO: H7.2.2 - remove if implemented
     }
+
+    @DoNotTouch
+    public static int[] toDigits(int number) {
+        int[] digits = new int[(int) Math.log10(number) + 1];
+        int index = digits.length - 1;
+        while (index >= 0) {
+            digits[index] = Math.floorMod(number, 10);
+            number /= 10;
+            index -= 1;
+        }
+        return digits;
+    }
 }
