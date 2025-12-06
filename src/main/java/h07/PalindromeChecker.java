@@ -6,6 +6,16 @@ import org.tudalgo.algoutils.student.annotation.StudentImplementationRequired;
 
 public class PalindromeChecker {
 
+    public static boolean isPalindromeHelper(int[]arr, int start, int end) {
+        if(start > end){
+            return true;
+        }else if(arr[start] != arr[end]){
+            return false;
+        }else{
+            return isPalindromeHelper(arr, start + 1, end - 1);
+        }
+    }
+
     /**
      * Recursively checks if an array is a palindrome by calling a helper function.
      * @param arr the array to check
@@ -13,7 +23,7 @@ public class PalindromeChecker {
      */
     @StudentImplementationRequired("H7.2.1")
     public static boolean isPalindromeRecursive(int[] arr) {
-        return Student.crash(); //TODO: H7.2.1 - remove if implemented
+        return isPalindromeHelper(arr, 0, arr.length - 1);
     }
 
     /**
@@ -23,7 +33,16 @@ public class PalindromeChecker {
      */
     @StudentImplementationRequired("H7.2.2")
     public static boolean isPalindromeIterative(int[] arr) {
-        return Student.crash(); //TODO: H7.2.2 - remove if implemented
+        int start = 0, end = arr.length - 1;
+        while (start < end) {
+            if (arr[start] != arr[end]) {
+                return false;
+            }else{
+                start++;
+                end--;
+            }
+        }
+        return true;
     }
 
     @DoNotTouch

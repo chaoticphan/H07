@@ -151,15 +151,11 @@ public class PeanoNumber {
      */
     @StudentImplementationRequired("H7.1.4")
     public PeanoNumber addIterative(PeanoNumber peanoNumber) {
-        PeanoNumber res = new PeanoNumber();
+        PeanoNumber res = peanoNumber;
         PeanoNumber currNum = this;
         while (currNum.getType() != PeanoValue.Zero) {
             res = new PeanoNumber(res);
             currNum = currNum.getPredecessor();
-        }
-        while (peanoNumber.getType() != PeanoValue.Zero) {
-            res = new PeanoNumber(res);
-            peanoNumber = peanoNumber.getPredecessor();
         }
         return res;
     }
@@ -171,7 +167,7 @@ public class PeanoNumber {
      */
     @StudentImplementationRequired("H7.1.5")
     public PeanoNumber multiplyRecursive(PeanoNumber peanoNumber) {
-        return Student.crash(); //TODO: H7.1.5 - remove if implemented
+        return (peanoNumber.getType() == PeanoValue.Zero)? peanoNumber : addRecursive(multiplyRecursive(peanoNumber.getPredecessor()))  ;
     }
 
     /**
@@ -181,7 +177,13 @@ public class PeanoNumber {
      */
     @StudentImplementationRequired("H7.1.6")
     public PeanoNumber multiplyIterative(PeanoNumber peanoNumber) {
-        return Student.crash(); //TODO: H7.1.6 - remove if implemented
+        PeanoNumber currNum = new PeanoNumber();
+        PeanoNumber mult = peanoNumber;
+        while(mult.getType() != PeanoValue.Zero) {
+            currNum = currNum.addIterative(this);
+            mult = mult.getPredecessor();
+        }
+        return currNum;
     }
 
 }
