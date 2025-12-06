@@ -17,7 +17,13 @@ public class Main {
         System.out.println(Two.toString());
         PeanoNumber Three = new PeanoNumber(Two);
         System.out.println(Three.toString());
-        PeanoNumber four = Three.addRecursive(Three);
-        System.out.println(four.asIntIterative());
-    }
+        PeanoNumber four = Two.multiplyIterative(One);
+        System.out.println(four.asIntRecursive());
+        System.out.println(PalindromeChecker.isPalindromeRecursive(new int[]{1,2,2,1}));
+        System.out.println(PalindromeChecker.isPalindromeIterative(new int[]{1,2,2,1}));
+        System.out.println(PalindromeChecker.isPalindromeRecursive(new int[]{1,2,3,2,1}));
+        System.out.println(PalindromeChecker.isPalindromeIterative(new int[]{1,2,3,2,1}));
+        System.out.println(PalindromeChecker.isPalindromeRecursive(new int[]{1,3,2,1}));
+        System.out.println(PalindromeChecker.isPalindromeIterative(new int[]{1,3,2,1}));
+}
 }
